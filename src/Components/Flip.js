@@ -33,7 +33,7 @@ const Flip = (props) => {
   return (
     <div className="flip-item">
       <div className="item-header-container">
-        <h2>{ props.flip.itemName }</h2>
+        <h2 className='text-truncate' title={props.flip.itemName}>{ props.flip.itemName }</h2>
       </div>
       <div className="flip-details">
         <div>{ `${Math.floor(timeRemaining / 60)} min ${Math.floor(timeRemaining % 60)} sec` }</div>
