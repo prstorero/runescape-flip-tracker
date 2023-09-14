@@ -1,7 +1,7 @@
-import Navbar from "./Components/Navbar"
-import Home from "./Components/Home"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import AddItem from "./Components/AddItem"
+import Navbar from './Components/Navbar'
+import Home from './Components/Home'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import AddItem from './Components/AddItem'
 
 function App() {
   return (

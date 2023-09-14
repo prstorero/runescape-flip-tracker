@@ -1,9 +1,9 @@
-import { useDispatch } from "react-redux"
-import { useState, useEffect } from "react"
+import { useDispatch } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { update, remove } from '../redux/slices/flipsSlice';
 
 const Flip = (props) => {
   const [timeRemaining, setTimeRemaining] = useState(props.flip.minsToUpdate * 60)
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -16,28 +16,18 @@ const Flip = (props) => {
     }, 1000)
   
     return () => {
-      // On cleanup, capture the most up to date
-      // minutes remaining until an update so we
-      // can store it
-      const flipWithUpdatedTime = {
-        ...props.flip,
-        minsToUpdate: timeRemaining / 60
-      }
       clearInterval(timerId)
-      dispatch({
-        type: "UPDATE",
-        flip: flipWithUpdatedTime,
-        id: props.flip.id
-      })
+      dispatch(
+        update({
+          flip: {id: props.flip.id, minsToUpdate: timeRemaining / 60},
+        })
+      )
     }
-  }, [timeRemaining])
+  }, [timeRemaining, dispatch, props.flip.id])
 
 
   const handleClick = (id) => {
-    dispatch({
-      type: "DELETE",
-      id
-    })
+    dispatch(remove(id))
   }
 
   return (

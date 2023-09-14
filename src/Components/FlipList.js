@@ -1,10 +1,10 @@
-import Flip from "./Flip"
+import Flip from './Flip'
 
 const FlipList = (props) => {
   return (
-    <div className="flips-container">
+    <div className="flip-list">
       {
-        props.flips.map(flip => (
+        props.flips?.map(flip => (
           <Flip flip={flip} key={flip.id} />
         ))
       }

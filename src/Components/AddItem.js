@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from "react"
-import { useDispatch } from "react-redux"
-import { add } from "../actions/flipActions"
-import { hashRandom } from "react-hash-string"
+import { useState, useRef, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { add } from '../redux/slices/flipsSlice'
+import { hashRandom } from 'react-hash-string'
 
 const AddItem = () => {
   const [itemName, setItemName] = useState("")
