@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { update, remove } from '../redux/slices/flipsSlice';
+import { update, remove } from '../redux/slices/flipsSlice'
+import Card from './common/Card'
 
-const Flip = (props) => {
-  const [timeRemaining, setTimeRemaining] = useState(props.flip.minsToUpdate * 60)
+const Flip = ({flip}) => {
+  const [timeRemaining, setTimeRemaining] = useState(flip.minsToUpdate * 60)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -19,11 +20,11 @@ const Flip = (props) => {
       clearInterval(timerId)
       dispatch(
         update({
-          flip: {id: props.flip.id, minsToUpdate: timeRemaining / 60},
+          flip: {id: flip.id, minsToUpdate: timeRemaining / 60},
         })
       )
     }
-  }, [timeRemaining, dispatch, props.flip.id])
+  }, [timeRemaining, dispatch, flip.id])
 
 
   const handleClick = (id) => {
@@ -31,17 +32,19 @@ const Flip = (props) => {
   }
 
   return (
-    <div className="flip-item">
-      <div className="item-header-container">
-        <h2 className='text-truncate' title={props.flip.itemName}>{ props.flip.itemName }</h2>
-      </div>
-      <div className="flip-details">
-        <div>{ `${Math.floor(timeRemaining / 60)} min ${Math.floor(timeRemaining % 60)} sec` }</div>
-        <div>{ props.flip.buyOrSell }</div>
-        <div>{ `${props.flip.itemPrice}m` }</div>
-        <button onClick={() => handleClick(props.flip.id)}>Delete</button>
-      </div>
-    </div>
+    <Card>
+      <Card.Body>
+      <Card.Title className={ ['text-truncate'] }>{flip.itemName}</Card.Title>
+        <Card.Text>
+        <span>
+          { `${Math.floor(timeRemaining / 60)} min ${Math.floor(timeRemaining % 60)} sec` }
+        </span>
+          <span>{ flip.buyOrSell }</span>
+          <span>{ `${flip.itemPrice}m` }</span>
+          <button onClick={() => handleClick(flip.id)}>Delete</button>
+        </Card.Text>
+      </Card.Body>
+    </Card>
   )
 }
  

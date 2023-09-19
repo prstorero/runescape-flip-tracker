@@ -1,5 +1,0 @@
-.text-truncate {
-  max-width: 20ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
