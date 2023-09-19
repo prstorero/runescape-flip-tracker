@@ -34,7 +34,7 @@ const Flip = ({flip}) => {
   return (
     <Card>
       <Card.Body>
-      <Card.Title className={ ['text-truncate'] }>{flip.itemName}</Card.Title>
+      <Card.Title className={ ['text-truncate'] } title={flip.itemName}>{flip.itemName}</Card.Title>
         <Card.Text>
         <span>
           { `${Math.floor(timeRemaining / 60)} min ${Math.floor(timeRemaining % 60)} sec` }
