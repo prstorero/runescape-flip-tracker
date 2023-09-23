@@ -26,6 +26,10 @@ export default styled(Card)`
       padding: 8px;
       border-radius: 8px;
       cursor: pointer;
+
+      &:hover {
+        background-color: #616161;
+      }
     }
   }
 `

@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { update, remove } from '../redux/slices/flipsSlice'
-import Card from './common/Card'
+import Card from './common/styled-components/Card'
+import FancyButton from './common/styled-components/FancyButton'
 
 const Flip = ({flip}) => {
   const [timeRemaining, setTimeRemaining] = useState(flip.minsToUpdate * 60)
@@ -41,7 +42,7 @@ const Flip = ({flip}) => {
         </span>
           <span>{ flip.buyOrSell }</span>
           <span>{ `${flip.itemPrice}m` }</span>
-          <button onClick={() => handleClick(flip.id)}>Delete</button>
+          <FancyButton onClick={() => handleClick(flip.id)} text="Delete"></FancyButton>
         </Card.Text>
       </Card.Body>
     </Card>
